@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ASA_4DPUPM</title>
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+	<link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+	<script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+	<script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+	<script src='mapbox-gl-draw-rectangle-mode.min.js'></script>
+	<script type="text/javascript" src="mode-collection.min.js"></script>
+	<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.2/mapbox-gl-draw.js"></script>
+	<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.2.2/mapbox-gl-draw.css" type="text/css">
+	<!-- Load the `mapbox-gl-geocoder` plugin. -->
+	<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
+	<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" type="text/css">
+	<!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
+	<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+	<!-- reference your copy Font Awesome here (from our CDN or by hosting yourself) -->
+	<link href="fontawesome-free-5.15.3-web/css/fontawesome.css" rel="stylesheet">
+	<link href="fontawesome-free-5.15.3-web/css/brands.css" rel="stylesheet">
+	<link href="fontawesome-free-5.15.3-web/css/solid.css" rel="stylesheet">
+	<style>
+		body { margin: 0; padding: 0; }
+		#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+		p.ex1 {font-size: 16px;}
+	</style>
+</head>
+<body>
+		<!-- HEADER-->
+		<div class="heading">
+			<ul class="logo-l">
+				<li><a href="index.html" class="logo">4D PUPM</a></li>
+				<li><a class="logo-text">Musrenbang prototype</a></li>
+				<li><div id="geocoder" class="logo-l"></div></li>
+			</ul>
+			<ul class="logo-r">
+				<li><a href="index-2.html">Participate</a></li>
+				<li><a href="#">Map</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#" class="nav-btn">Login</a></li>
+			</ul>
+		</div>
+
+		<!-- SIDE NAVIGATION-->
+		<div class="sidenav">
+			<a onclick="openNav1()">
+				<div class="icon">
+					<i class="fas fa-building"></i>
+				</div>
+				<div class="name" data-text="Info">Info</div>
+			</a>
+			<a href="#" onclick="openNav2()">
+				<div class="icon">
+					<i class="fas fa-layer-group"></i>
+				</div>
+				<div class="name" data-text="Layer">Layer</div>
+			</a>
+			<a href="#" onclick="openNav3()">
+				<div class="icon">
+					<i class="fas fa-filter"></i>
+				</div>
+				<div class="name" data-text="Filter">Filter</div>
+			</a>
+			<a href="#" onclick="openNav4()">
+				<div class="icon">
+					<i class="fas fa-user-edit"></i>
+				</div>
+				<div class="name" data-text="Draw">Draw</div>
+			</a>
+		</div>
+
+			<!-- Sidenav: Detail-->
+			<div id="mySidenav1" class="new">
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times</a>
+				<div id="info">
+					<div id="images"> 
+						<i class="fas fa-image"></i>
+						<br>No image available.
+					</div>
+					<table class= "infotab">
+					<tr>
+						<td>Zoning Area</th>
+						<td id="zona"></th>
+					</tr>
+					<tr>
+						<td>City</td>
+						<td id="city"></td>
+					</tr>
+					<tr>
+						<td>District</th>
+						<td id="district"></th>
+					</tr>
+					<tr>
+						<td>Sub-district</th>
+						<td id="subdistrict"></th>
+					</tr>
+					<tr>
+						<td>Building Coverage Ratio</th>
+						<td id="kdb"></th>
+					</tr>
+					<tr>
+						<td>Floor Average Ratio</th>
+						<td id="klb"></th>
+					</tr>
+					<tr>
+						<td>Building Height</th>
+						<td id="kb"></th>
+					</tr>
+					<tr>
+						<td>Green Base Coefficient</th>
+						<td id="kdh"></th>
+					</tr>
+					</table>
+				</div>
+			</div>
+
+			<!-- Sidenav: Layer-->
+			<div id="mySidenav2" class="new">
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+				<label class="container">Buildings
+					<input id="buildingsCB" type="checkbox" value="buildings" onchange="switchlayer('buildings')">
+					<span class="checkmark"></span>
+				</label>
+				<label class="container">Zoning Plan
+					<input id="spatplanCB" type="checkbox" value="spatplan" onchange="switchlayer('spatplan')" checked/>
+					<span class="checkmark"></span>
+				</label>
+			</div>
+
+			<!-- Sidenav: Layer-->
+			<div id="mySidenav3" class="new">
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+				<div class="item">List</div>
+				<div class="item">List</div>
+			</div>
+
+			<!-- Sidenav: Layer-->
+			<div id="mySidenav4" class="new2">
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+				<button id="draw-rectangle" class="draw">Commercial</button>
+				<div class="btn-draw">Residential</div>
+				<div class="btn-draw">Office</div>
+				<div class="btn-draw">Mixed-use</div>
+				<div class="btn-draw">Open space</div>
+				<div class="btn-draw">Water element</div>
+			</div>
+
+
+
+		<div class="map" id="map"></div>
+		<!-- <a href='#' id='export'></a>
+		<a href="#" id='updateDataset'></a> -->
+
+
+		<script>
+			/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+			var dropdown = document.getElementsByClassName("dropdown-btn");
+			var i;
+			
+			for (i = 0; i < dropdown.length; i++) {
+			  dropdown[i].addEventListener("click", function() {
+			  this.classList.toggle("active");
+			  var dropdownContent = this.nextElementSibling;
+			  if (dropdownContent.style.display === "block") {
+			  dropdownContent.style.display = "none";
+			  } else {
+			  dropdownContent.style.display = "block";
+			  }
+			  });
+			}
+			</script>
+
+<script>
+/* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+function openNav1() {
+  document.getElementById("mySidenav1").style.width = "300px";
+  document.getElementById("map").style.marginLeft = "300px";
+  document.getElementById("mySidenav2").style.width = "0";
+  document.getElementById("mySidenav3").style.width = "0";
+  document.getElementById("mySidenav4").style.width = "0";
+}
+function openNav2() {
+  document.getElementById("mySidenav2").style.width = "300px";
+  document.getElementById("map").style.marginLeft = "300px";
+  document.getElementById("mySidenav1").style.width = "0";
+  document.getElementById("mySidenav3").style.width = "0";
+  document.getElementById("mySidenav4").style.width = "0";
+}
+function openNav3() {
+  document.getElementById("mySidenav3").style.width = "300px";
+  document.getElementById("map").style.marginLeft = "300px";
+  document.getElementById("mySidenav2").style.width = "0";
+  document.getElementById("mySidenav1").style.width = "0";
+  document.getElementById("mySidenav4").style.width = "0";
+}
+function openNav4() {
+  document.getElementById("mySidenav4").style.width = "300px";
+  document.getElementById("map").style.marginLeft = "300px";
+  document.getElementById("mySidenav1").style.width = "0";
+  document.getElementById("mySidenav2").style.width = "0";
+  document.getElementById("mySidenav3").style.width = "0";
+}
+
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+function closeNav() {
+  document.getElementById("mySidenav1").style.width = "0";
+  document.getElementById("mySidenav2").style.width = "0";
+  document.getElementById("mySidenav3").style.width = "0";
+  document.getElementById("mySidenav4").style.width = "0";
+  document.getElementById("map").style.marginLeft = "0";
+}
+
+
+	</script>
+
+<script src='/js/'></script>
+<script src='/js/'></script>
+
+
+</body>
+</html>
