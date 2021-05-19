@@ -74,7 +74,6 @@ li {
   width: 50%;
   margin-left: auto;
   padding: 10px 16px;
-  align-items: center;
   border-radius: 4px;
  }
   .mapboxgl-ctrl-geocoder {
