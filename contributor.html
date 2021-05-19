@@ -44,17 +44,17 @@
 		<!-- HEADER-->
 		<div class="heading">
 			<ul class="logo-l">
-				<li><a href="/" class="logo">4D PUPM</a></li>
-				<li><a class="logo-text">Musrenbang prototype</a></li>
-				<li><div id="geocoder" class="logo-l"></div></li>
+				<li><a href="/" class="logo" style="padding: 14px 10px;">4D PUPM</a></li>
+				<li><a class="logo-text" style="padding: 14px 10px;">Musrenbang prototype</a></li>
+				<div id="geocoder" class="geocoder"></div>
 			</ul>
 			<ul class="logo-r">
-				<li><a href="participate">Participate</a></li>
-				<li><a href="#">Map</a></li>
-				<li><a href="#">About</a></li>
+				<li><a href="#" style="padding: 14px 10px;">Map</a></li>
+				<li><a href="#" style="padding: 14px 10px;">About</a></li>
 				<li><a href="#" class="nav-btn">Login</a></li>
 			</ul>
 		</div>
+		
 
 		<!-- SIDE NAVIGATION-->
 		<div class="sidenav">
@@ -152,12 +152,19 @@
 			<!-- Sidenav: Layer-->
 			<div id="mySidenav4" class="new2">
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-				<button id="draw-rectangle" class="draw">Commercial</button>
-				<div class="btn-draw">Residential</div>
-				<div class="btn-draw">Office</div>
-				<div class="btn-draw">Mixed-use</div>
-				<div class="btn-draw">Open space</div>
-				<div class="btn-draw">Water element</div>
+				<div id="draw-rectangle" class="btn-draw"><i class="fas fa-cube" style="color: red"></i> 
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Commercial</div>
+				<div id="draw-rectangle1" class="btn-draw"><i class="fas fa-cube" style="color:yellow"></i> 
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Residential</div>
+				<div id="draw-rectangle2" class="btn-draw"><i class="fas fa-cube" style="color: blue"></i> 
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Office</div>
+				<div id="draw-rectangle2" class="btn-draw"><i class="fas fa-cube" style="color: greenyellow"></i> 
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Open Space</div>
+				<div id="draw-rectangle2" class="btn-draw"><i class="fas fa-cube" style="color: orange"></i> 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mixed-use</div>
+				<div id="move" class="btn-draw" style="background-color: papayawhip">
+					Change position &nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-arrows-alt"></i> 
+				</div>
 			</div>
 
 
