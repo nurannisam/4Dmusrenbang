@@ -69,12 +69,11 @@ li {
 }
 
 .geocoder {
-  position: absolute;
+  position: relative;
   z-index: 1;
   width: 50%;
   margin-left: 400px;
-  align-items: center;
-  }
+ }
   .mapboxgl-ctrl-geocoder {
   min-width: 100%;
   }
