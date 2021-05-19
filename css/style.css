@@ -73,6 +73,9 @@ li {
   z-index: 1;
   width: 50%;
   margin-left: 400px;
+  padding: 10px 16px;
+  align-items: center;
+  border-radius: 4px;
  }
   .mapboxgl-ctrl-geocoder {
   min-width: 100%;
