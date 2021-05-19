@@ -69,10 +69,11 @@ li {
 }
 
 .geocoder {
-  position: relative;
+  display: flex;
+  position: absolute;
   z-index: 1;
   width: 50%;
-  margin-left: auto;
+  margin-left: -25%;
   padding: 10px 16px;
   border-radius: 4px;
  }
