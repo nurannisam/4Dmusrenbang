@@ -29,7 +29,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibnVyYW5uaXNhbSIsImEiOiJjamptYzBqNjAweXozM3dtc
 			'source': 'buildings',
 			'layout': {'visibility': 'none'},
 			'paint': {
-				'fill-extrusion-color': 'white',
+				'fill-extrusion-color': 'black',
 				'fill-extrusion-height': [
 					"match",
 					["get", "height"],
@@ -52,7 +52,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibnVyYW5uaXNhbSIsImEiOiJjamptYzBqNjAweXozM3dtc
 					0
 				],
 				'fill-extrusion-base': 0,
-				'fill-extrusion-opacity': 0.7
+				'fill-extrusion-opacity': 0.5
 			}
 			});
 
@@ -249,9 +249,6 @@ map.getCanvas().style.cursor = '';
 // 	document.getElementById("mySidenav2").style.width = "300px";
 //   	document.getElementById("map").style.marginLeft = "300px";
 
-// Add zoom and rotation controls to the map.
-var nav = new mapboxgl.NavigationControl();
-map.addControl(nav, 'top-right');
 
 //draw
 var modes = MapboxDraw.modes;
