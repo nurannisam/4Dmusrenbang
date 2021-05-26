@@ -23,17 +23,6 @@
 	<link href="fontawesome-free-5.15.3-web/css/fontawesome.css" rel="stylesheet">
 	<link href="fontawesome-free-5.15.3-web/css/brands.css" rel="stylesheet">
 	<link href="fontawesome-free-5.15.3-web/css/solid.css" rel="stylesheet">
-	<!-- Hotjar Tracking Code for https://nurannisam.github.io/4Dmusrenbang/ -->
-	<script>
-	    (function(h,o,t,j,a,r){
-		h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-		h._hjSettings={hjid:2388731,hjsv:6};
-		a=o.getElementsByTagName('head')[0];
-		r=o.createElement('script');r.async=1;
-		r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-		a.appendChild(r);
-	    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-	</script>
 	<style>
 		body { margin: 0; padding: 0; }
 		#map { position: absolute; top: 0; bottom: 0; width: 100%; }
@@ -44,19 +33,17 @@
 		<!-- HEADER-->
 		<div class="heading">
 			<ul class="logo-l">
-				<ul class="logo-l">
-					<li><a href="index" class="logo" style="margin-right: 2em; white-space: nowrap;">4D PUPM</a></li>
-					<li><a class="logo-text" style="margin-right: 2em; white-space: nowrap">Musrenbang prototype</a></li>
-					<div id="geocoder" class="geocoder"></div>
-				</ul>
+				<li><a href="/" class="logo">4D PUPM</a></li>
+				<li><a class="logo-text">Musrenbang prototype</a></li>
+				<li><div id="geocoder" class="logo-l"></div></li>
+			</ul>
 			<ul class="logo-r">
-				<li><a href="contributor" style="margin-right: 2em; display: inline-block;">Participate</a></li>
-				<li><a href="index" style="margin-right: 2em; display: inline-block;">Map</a></li>
-				<li><a href="#" style="margin-right: 2em; display: inline-block;">About</a></li>
+				<li><a href="participate">Participate</a></li>
+				<li><a href="#">Map</a></li>
+				<li><a href="#">About</a></li>
 				<li><a href="#" class="nav-btn">Login</a></li>
 			</ul>
 		</div>
-		
 
 		<!-- SIDE NAVIGATION-->
 		<div class="sidenav">
@@ -160,9 +147,9 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Residential</div>
 				<div id="draw-rectangle2" class="btn-draw"><i class="fas fa-cube" style="color: blue"></i> 
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Office</div>
-				<div id="draw-rectangle2" class="btn-draw"><i class="fas fa-cube" style="color: greenyellow"></i> 
+				<div id="draw-rectangle3" class="btn-draw"><i class="fas fa-cube" style="color: greenyellow"></i> 
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Open Space</div>
-				<div id="draw-rectangle2" class="btn-draw"><i class="fas fa-cube" style="color: orange"></i> 
+				<div id="draw-rectangle4" class="btn-draw"><i class="fas fa-cube" style="color: orange"></i> 
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mixed-use</div>
 				<div id="move" class="btn-draw" style="background-color: papayawhip">
 					Change position &nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-arrows-alt"></i> 
@@ -237,8 +224,10 @@ function closeNav() {
 
 	</script>
 
-<script src='js/map.js'></script>
-<script src='js/mapbox-gl-draw-rectangle-mode.min.js'></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src='js/map-2.js'></script>
+
+
 
 
 </body>
